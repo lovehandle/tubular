@@ -62,5 +62,5 @@ module Tubular
       end
     end
 
-  end
+  end # class Builder
 end # module Tubular
