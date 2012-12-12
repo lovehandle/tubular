@@ -41,7 +41,7 @@ module Tubular
         content_tag(:tr) do
           columns.map do |column| 
             content_tag(:th, column.header_html) do
-              column.render_header_content
+              column.render_header_content.to_s
             end
           end.join.html_safe
         end
@@ -54,7 +54,7 @@ module Tubular
           content_tag(:tr) do
             columns.map do |column|
               content_tag(:td, column.cell_html) do
-                column.render_body_content(record)
+                column.render_body_content(record).to_s
               end
             end.join.html_safe
           end
