@@ -28,6 +28,22 @@ module Tubular
       columns << build_column(*args, &block) 
     end
 
+    def method_missing(m, *args, &block)
+      if context.respond_to?(m)
+        context.send(m, *args, &block)
+      else
+        super
+      end
+    end
+
+    def respond_to?(m)
+      if context.respond_to?(m)
+        true
+      else
+        super
+      end
+    end
+
     protected
 
     attr_reader :context, :collection, :columns, :table_html
